@@ -7,7 +7,6 @@
              mc:Ignorable="d"
              d:DesignHeight="640" d:DesignWidth="640"
              Name="Root"
-             Background="Transparent"
              MouseDown="Root_MouseDown"
              MouseUp="Root_MouseUp"
              MouseMove="Root_MouseMove"
@@ -31,12 +30,14 @@
         </Canvas>
         <StackPanel Grid.Row="0" Grid.Column="1"
                     Orientation="Horizontal">
-            <Button Width="48" Height="48">
+            <Button Width="48" Height="48"
+                    Click="Button_Plus_Click">
                 <Viewbox>
                     <TextBlock Text="+" Margin="0,-3,0,0"/>
                 </Viewbox>
             </Button>
-            <Button Width="48" Height="48">
+            <Button Width="48" Height="48"
+                    Click="Button_Minus_Click">
                 <Viewbox>
                     <TextBlock Text="-" Margin="0,-3,0,0"/>
                 </Viewbox>

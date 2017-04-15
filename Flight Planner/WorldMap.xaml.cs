@@ -44,6 +44,16 @@ namespace CIOSDigital.FlightPlanner
             InitializeComponent();
         }
 
+        private void Button_Plus_Click(object sender, RoutedEventArgs e)
+        {
+            this.PerformZoom(1);
+        }
+
+        private void Button_Minus_Click(object sender, RoutedEventArgs e)
+        {
+            this.PerformZoom(-1);
+        }
+
         private void Root_MouseWheel(object sender, MouseWheelEventArgs e)
         {
             this.PerformZoom(Math.Sign(e.Delta));
@@ -92,7 +102,14 @@ namespace CIOSDigital.FlightPlanner
         {
             Debug.Assert(delta == 1 || delta == -1);
             this.ZoomLevel += delta;
-            Console.WriteLine("Zooooom");
+            if (delta == 1)
+            {
+                Console.WriteLine("Zoom in");
+            }
+            else
+            {
+                Console.WriteLine("Zoom out");
+            }
         }
     }
 }

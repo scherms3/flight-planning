@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CIOSDigital.FlightPlanner"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300"
+             d:DesignHeight="640" d:DesignWidth="640"
              Name="Root"
              Background="Transparent"
              MouseDown="Root_MouseDown"
@@ -13,9 +13,34 @@
              MouseMove="Root_MouseMove"
              MouseWheel="Root_MouseWheel"
              MouseLeave="Root_MouseLeave">
-    <Canvas Name="Picture" Background="Gray">
-        <Rectangle Canvas.Left="0" Canvas.Top="0"
-                   Height="25" Width="25"
-                   Fill="Red"/>
-    </Canvas>
+    <Grid Background="Gray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Canvas Name="Picture"
+                Grid.Row="0" Grid.RowSpan="2"
+                Grid.Column="0" Grid.ColumnSpan="2">
+            <Rectangle Canvas.Left="0" Canvas.Top="0"
+                        Height="25" Width="25"
+                        Fill="Red"/>
+        </Canvas>
+        <StackPanel Grid.Row="0" Grid.Column="1"
+                    Orientation="Horizontal">
+            <Button Width="48" Height="48">
+                <Viewbox>
+                    <TextBlock Text="+" Margin="0,-3,0,0"/>
+                </Viewbox>
+            </Button>
+            <Button Width="48" Height="48">
+                <Viewbox>
+                    <TextBlock Text="-" Margin="0,-3,0,0"/>
+                </Viewbox>
+            </Button>
+        </StackPanel>
+    </Grid>
 </UserControl>

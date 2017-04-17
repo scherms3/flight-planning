@@ -8,7 +8,17 @@
         Title="Flight Planner | CIOS Digital">
     <DockPanel Name="MainPanel">
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="_File"></MenuItem>
+            <MenuItem Header="_File">
+                <MenuItem Header="_New"/>
+                <MenuItem Header="_Save"/>
+                <MenuItem Header="Save _As"/>
+                <MenuItem Header="_Open"/>
+                <Separator/>
+                <MenuItem Header="_Quit"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About"/>
+            </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
             <TextBlock Text="Status..."/>
@@ -79,6 +89,7 @@
             <StackPanel Grid.Row="2" Grid.RowSpan="1"
                         Grid.Column="0" Grid.ColumnSpan="1"
                         Background="White">
+                <TextBlock Text="(Waypoints on flight plan)"/>
             </StackPanel>
             <GridSplitter Name="VSplitter"
                           Grid.Row="3" Grid.RowSpan="1"
@@ -89,6 +100,7 @@
             <StackPanel Grid.Row="4" Grid.RowSpan="1"
                         Grid.Column="0" Grid.ColumnSpan="1"
                         Background="White">
+                <TextBlock Text="(Other flight plans in folder)"/>
             </StackPanel>
             <GridSplitter Grid.Row="0" Grid.RowSpan="5"
                           Grid.Column="1" Grid.ColumnSpan="1"

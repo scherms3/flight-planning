@@ -13,7 +13,20 @@
              MouseWheel="Root_MouseWheel"
              MouseLeave="Root_MouseLeave">
     <Grid Background="Gray">
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="MinHeight" Value="48"/>
+                <Setter Property="MinWidth" Value="48"/>
+                <Setter Property="Margin" Value="2"/>
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="24"/>
+                <Setter Property="Margin" Value="0,-3,0,0"/>
+                <Setter Property="Padding" Value="8,0" />
+            </Style>
+        </Grid.Resources>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
@@ -23,24 +36,38 @@
         </Grid.RowDefinitions>
         <Canvas Name="Picture"
                 Grid.Row="0" Grid.RowSpan="2"
-                Grid.Column="0" Grid.ColumnSpan="2">
-            <Rectangle Canvas.Left="0" Canvas.Top="0"
-                        Height="25" Width="25"
-                        Fill="Red"/>
+                Grid.Column="0" Grid.ColumnSpan="3">
+            <Image Canvas.Left="64" Canvas.Top="64"
+                       Source="Resources/Placeholder.png"/>
         </Canvas>
-        <StackPanel Grid.Row="0" Grid.Column="1"
+        <StackPanel x:Name="MapTypeToggles"
+                    Grid.Row="0" Grid.Column="0"
                     Orientation="Horizontal">
-            <Button Width="48" Height="48"
-                    Click="Button_Plus_Click">
-                <Viewbox>
-                    <TextBlock Text="+" Margin="0,-3,0,0"/>
-                </Viewbox>
+            <Button x:Name="RoadMapToggle"
+                    Click="MapToggle_Click"
+                    IsEnabled="False">
+                <TextBlock Text="Road Map"/>
             </Button>
-            <Button Width="48" Height="48"
-                    Click="Button_Minus_Click">
-                <Viewbox>
-                    <TextBlock Text="-" Margin="0,-3,0,0"/>
-                </Viewbox>
+            <Button x:Name="TerrainToggle"
+                    Click="MapToggle_Click">
+                <TextBlock Text="Terrain"/>
+            </Button>
+            <Button x:Name="SatelliteToggle"
+                    Click="MapToggle_Click">
+                <TextBlock Text="Satellite"/>
+            </Button>
+            <Button x:Name="HybridToggle"
+                    Click="MapToggle_Click">
+                <TextBlock Text="Hybrid"/>
+            </Button>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="2"
+                    Orientation="Horizontal">
+            <Button Click="Button_Plus_Click">
+                <TextBlock Text="+"/>
+            </Button>
+            <Button Click="Button_Minus_Click">
+                <TextBlock Text="-"/>
             </Button>
         </StackPanel>
     </Grid>

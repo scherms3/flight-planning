@@ -21,6 +21,18 @@ namespace CIOSDigital.FlightPlanner
     /// </summary>
     public partial class WorldMap : UserControl
     {
+        public static DependencyProperty MapTypeProperty =
+            DependencyProperty.Register("MapType", typeof(MapType), typeof(WorldMap));
+        private MapType _MapType = MapType.RoadMap;
+        public MapType MapType {
+            get {
+                return _MapType;
+            }
+            private set {
+                _MapType = value;
+            }
+        }
+
         public bool MouseIsDown { get; private set; }
         public Point MousePosition { get; private set; }
 
@@ -39,7 +51,7 @@ namespace CIOSDigital.FlightPlanner
         {
             this.MouseIsDown = false;
             this.MousePosition = new Point(0, 0);
-            this.Coordinates = new Point(-47, -123);
+            this.Coordinates = new Point(47.62, -122.35);
             this.ZoomLevel = 6;
             InitializeComponent();
         }
@@ -109,6 +121,37 @@ namespace CIOSDigital.FlightPlanner
             else
             {
                 Console.WriteLine("Zoom out");
+            }
+        }
+
+        private void MapToggle_Click(object sender, RoutedEventArgs e)
+        {
+            Button pressed = (Button)sender;
+            pressed.IsEnabled = false;
+
+            foreach (Button elem in MapTypeToggles.Children.OfType<Button>())
+            {
+                if (elem != null && elem != pressed)
+                {
+                    elem.IsEnabled = true;
+                }
+            }
+
+            switch (pressed.Name)
+            {
+                default: break;
+                case "RoadMapToggle":
+                    this.MapType = MapType.RoadMap;
+                    break;
+                case "TerrainToggle":
+                    this.MapType = MapType.Terrain;
+                    break;
+                case "SatelliteToggle":
+                    this.MapType = MapType.Satellite;
+                    break;
+                case "HybridToggle":
+                    this.MapType = MapType.Hybrid;
+                    break;
             }
         }
     }

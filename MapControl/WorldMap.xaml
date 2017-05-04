@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="CIOSDigital.MapControl.WorldMap"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CIOSDigital.MapControl"
+             mc:Ignorable="d"
+             d:DesignHeight="640" d:DesignWidth="800"
+             Name="Root"
+             MouseDown="Root_MouseDown"
+             MouseUp="Root_MouseUp"
+             MouseMove="Root_MouseMove"
+             MouseLeave="Root_MouseLeave" >
+    <!--     MouseWheel="Root_MouseWheel" -->
+    <Grid Background="Gray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Canvas Name="Picture"
+                Grid.Row="0" Grid.RowSpan="2"
+                Grid.Column="0" Grid.ColumnSpan="3">
+            <Image Canvas.Left="64" Canvas.Top="64"
+                       Source="Resources/Placeholder.png"/>
+        </Canvas>
+        <local:MapTypeSelector x:Name="TypeSelector"
+                               Grid.Row="0" Grid.Column="0"/>
+        <local:ZoomSelector x:Name="ZoomSelector"
+                            Grid.Row="0" Grid.Column="2"/>
+    </Grid>
+</UserControl>

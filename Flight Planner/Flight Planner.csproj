@@ -86,11 +86,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MapType.cs" />
     <Compile Include="ProportionConverter.cs" />
-    <Compile Include="WorldMap.xaml.cs">
-      <DependentUpon>WorldMap.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,10 +99,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="WorldMap.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -143,7 +135,22 @@
     <Resource Include="Resources\GripDot.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Placeholder.png" />
+    <ProjectReference Include="..\Coordinate\Coordinate.csproj">
+      <Project>{c8d5226b-dec9-4efb-b0e1-b38e60c96656}</Project>
+      <Name>Coordinate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlightPlan\FlightPlan.csproj">
+      <Project>{139fef63-425a-4d05-8ec9-88b9b09c1965}</Project>
+      <Name>FlightPlan</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MapControl\MapControl.csproj">
+      <Project>{2df156f9-2114-4ab9-b246-1f16e33cf3e2}</Project>
+      <Name>MapControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MapDB\MapDB.csproj">
+      <Project>{a46c4a12-7e15-41d2-9ef9-a3008c4d03c8}</Project>
+      <Name>MapDB</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

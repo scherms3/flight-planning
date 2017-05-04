@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CIOSDigital.FlightPlanner"
+        xmlns:mapcontrol="clr-namespace:CIOSDigital.MapControl;assembly=MapControl"
         mc:Ignorable="d"
         Title="Flight Planner | CIOS Digital">
     <DockPanel Name="MainPanel">
@@ -107,7 +108,7 @@
                           HorizontalAlignment="Center" VerticalAlignment="Stretch"
                           Width="8"
                           Background="{StaticResource GripDots}" />
-            <local:WorldMap Grid.Row="0" Grid.RowSpan="5"
+            <mapcontrol:WorldMap Grid.Row="0" Grid.RowSpan="5"
                             Grid.Column="2" Grid.ColumnSpan="1"
                             Panel.ZIndex="-1"/>
         </Grid>

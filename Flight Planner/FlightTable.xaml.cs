@@ -16,39 +16,32 @@ using System.Windows.Shapes;
 
 namespace CIOSDigital.FlightPlanner
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class FlightTable : UserControl
     {
         public static readonly DependencyProperty ActivePlanProperty =
-            DependencyProperty.Register("ActivePlan", typeof(Plan), typeof(MainWindow));
+            DependencyProperty.Register("ActivePlan", typeof(Plan), typeof(FlightTable));
         public Plan ActivePlan {
             get {
                 return this.GetValue(ActivePlanProperty) as Plan;
             }
             set {
                 this.SetValue(ActivePlanProperty, value);
+                this.Table.ItemsSource = value;
             }
         }
 
-        public MainWindow()
+        public FlightTable()
         {
             InitializeComponent();
         }
 
-        private void AddWaypoint_Click(object sender, RoutedEventArgs e)
+        public void Refresh()
         {
-            if (this.ActivePlan == null)
+            foreach (Coordinate c in this.ActivePlan)
             {
-                this.ActivePlan = Plan.Empty();
+                Console.WriteLine("Refreshing with coordinate {0}, {1}", c.Latitude, c.Longitude);
             }
-            decimal latitude, longitude;
-            if (Decimal.TryParse(LatitudeInput.Text, out latitude) && Decimal.TryParse(LongitudeInput.Text, out longitude))
-            {
-                this.ActivePlan.AppendWaypoint(new Coordinate(latitude, longitude));
-            }
-            this.FlightTable.Refresh();
+            this.Table.Items.Refresh();
         }
     }
 }

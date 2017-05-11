@@ -70,28 +70,22 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0"
-                           Grid.Column="0"
-                           Text="Latitude"/>
-                <TextBox Grid.Row="0"
-                         Grid.Column="1" />
-                <TextBlock Grid.Row="1"
-                           Grid.Column="0"
-                           Text="Longitude" />
-                <TextBox Grid.Row="1"
-                         Grid.Column="1" />
-                <Button Grid.Row="2"
-                        Grid.Column="0" Grid.ColumnSpan="2"
-                        Content="Add Waypoint" />
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Latitude"/>
+                <TextBox x:Name="LatitudeInput" Grid.Row="0" Grid.Column="1" />
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Longitude" />
+                <TextBox x:Name="LongitudeInput" Grid.Row="1" Grid.Column="1" />
+                <Button Grid.Row="2" Grid.Column="0"
+                        Grid.RowSpan="1" Grid.ColumnSpan="2"
+                        Content="Add Waypoint"
+                        Click="AddWaypoint_Click"/>
             </Grid>
             <Rectangle Grid.Row="1"
                        Height="8"
                        Fill="WhiteSmoke" />
-            <StackPanel Grid.Row="2" Grid.RowSpan="1"
-                        Grid.Column="0" Grid.ColumnSpan="1"
-                        Background="White">
-                <TextBlock Text="(Waypoints on flight plan)"/>
-            </StackPanel>
+            <local:FlightTable x:Name="FlightTable"
+                               Grid.Row="2" Grid.RowSpan="1"
+                               Grid.Column="0" Grid.ColumnSpan="1"
+                               ActivePlan="{Binding RelativeSource={x:Static RelativeSource.Self}, Path=ar}" />
             <GridSplitter Name="VSplitter"
                           Grid.Row="3" Grid.RowSpan="1"
                           Grid.Column="0" Grid.ColumnSpan="1"
